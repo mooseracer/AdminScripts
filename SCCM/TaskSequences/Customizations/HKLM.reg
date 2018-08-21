@@ -1,0 +1,101 @@
+Windows Registry Editor Version 5.00
+
+;-----------------
+;Disable intranet compatibility view -- permanent, users can't toggle it
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\BrowserEmulation]
+;"IntranetCompatibilityMode"=dword:00000000
+
+
+;-----------------
+;Windows LSASS - Support large kerberos tokens. Also in the WinRM GPO.
+;              - Enable LsaAllowReturningUnencryptedSecrets for Cisco AnyConnect machine authentication
+;-----------------
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Kerberos\Parameters]
+"MaxTokenSize"=dword:0000ffff
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP\Parameters]
+"MaxFieldLength"=dword:0000ffff
+"MaxRequestBytes"=dword:01000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
+"LsaAllowReturningUnencryptedSecrets"=dword:00000001
+
+
+;-----------------
+;Windows SMB - Disable SMBv1
+;-----------------
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\mrxsmb10]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters]
+"SMB1"=dword:00000000
+
+;-----------------
+;Windows Defender Security Center - Disable
+;-----------------
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"SecurityHealth"=-
+
+;-----------------
+;Windows Explorer - Disable autoplay
+;-----------------
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoDriveAutoRun"=dword:03FFFFFF
+
+
+;-----------------
+;Removes Entrust icon from systray
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+"eesystry.exe"=-
+
+
+;-----------------
+;Disable Adobe Updater
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"AdobeAAMUpdater-1.0"=-
+
+
+;-----------------
+;System account (shouldn't be needed but just in case)
+;               - Set date formats
+;               - Set input keyboard to US-en, remove CA-en
+;-----------------
+[HKEY_USERS\.DEFAULT\Control Panel\International]
+"sShortDate"="dd/MM/yy"
+"sLongDate"="d-MMM-yy"
+
+[HKEY_USERS\.DEFAULT\Keyboard Layout\Preload]
+"1"=dword:00000409
+"2"=-
+
+
+;-----------------
+;Windows Search - include extra paths
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\CurrentPolicies\DefaultIndexedPaths]
+"C:\OPPapps"="C:\OPPapps"
+"C:\Common Data"="C:\Common Data"
+"C:\PKIapps"="C:\PKIapps"
+"C:\Temp"="C:\Temp"
+"C:\Perflogs"="C:\Perflogs"
+
+
+;-----------------
+;Windows Lock screen - Disable changes
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoChangingLockScreen"=dword:00000001
+
+
+;-----------------
+;Windows consumer games/apps - disable
+;-----------------
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
+"DisableSoftLanding"=dword:00000001

@@ -1,0 +1,113 @@
+Windows Registry Editor Version 5.00
+
+;-----------------
+;Disable intranet compatibility view **doesn't work**, and the feedback prompt
+;-----------------
+[HKEY_USERS\DU\Software\Microsoft\Internet Explorer\BrowserEmulation]
+"IntranetCompatibilityMode"=dword:00000000
+
+[HKEY_USERS\DU\Software\Policies\Microsoft\Internet Explorer\Restrictions]
+"NoHelpItemSendFeedback"=dword:00000001
+
+
+;-----------------
+;Windows Explorer - show file extensions, show hidden files
+;		  - show desktop icons "This PC", "Recycle Bin", and "User's Files"
+;		  - expand all notifications in the systray
+;		  - disable Sync Provider notifications
+;		  - disable People Bar
+;		  - enable "Run as different user" in Start Menu
+;		  - enable Recycle Bin's delete confirmation
+;-----------------
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Hidden"=dword:00000001
+"HideFileExt"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons]
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000000
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000000
+"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"EnableAutoTray"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowSyncProviderNotifications"=dword:00000000
+
+[HKEY_USERS\DU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
+"PeopleBand"=dword:00000000
+
+[HKEY_USERS\DU\Software\Policies\Microsoft\Windows\Explorer]
+"ShowRunasDifferentUserInStart"=dword:00000001
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"ConfirmFileDelete "=dword:00000001
+
+
+;-----------------
+;Internet Explorer - Hide the 'open in Edge' button
+                   - Disable the prompt to enable AutoComplete
+;-----------------
+[HKEY_USERS\DU\Software\Microsoft\Internet Explorer\Main]
+"HideNewEdgeButton"=dword:00000001
+
+[HKEY_USERS\DU\Software\Microsoft\Internet Explorer\IntelliForms]
+"AskUser"=dword:00000000
+
+
+;-----------------
+;Devices - Printers & Scanners - disable "Let Windows manage my default printer"
+;-----------------
+[HKEY_USERS\DU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+"LegacyDefaultPrinterMode"=dword:00000001
+
+
+;-----------------
+;Regional Settings - Set date formats
+;                  - Set input keyboard to US-en, remove CA-en
+;-----------------
+[HKEY_USERS\DU\Control Panel\International]
+"sShortDate"="dd/MM/yy"
+"sLongDate"="d-MMM-yy"
+
+[HKEY_USERS\DU\Keyboard Layout\Preload]
+"1"=dword:00000409
+"2"=-
+
+;-----------------
+;Notifications - Disable Security and Maintenance
+;-----------------
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
+"Enabled"=dword:00000000
+
+
+;-----------------
+;Lock Screen      - disable "Suggested apps" in Start Menu
+;                 - disable Spotlight
+;-----------------
+[HKEY_USERS\DU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$start.suggestions$windows.data.curatedtilecollection.root]
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$start.suggestions$windows.data.curatedtilecollection.root\Current]
+"Data"=hex:02,00,00,00,a3,15,26,fd,f7,57,d3,01,00,00,00,00,43,42,01,00,0a,00,\
+  d0,14,0c,ca,32,00,00
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"RotatingLockScreenEnabled"=dword:00000000
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+
+[HKEY_USERS\DU\Software\Microsoft\Windows\CurrentVersion\Lock Screen\Creative]
+"LockImageFlags"=dword:00000000
+"CreativeId"=""
+"PlacementId"=""
+"ImpressionToken"=""
+"CreativeJson"=""
